@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  webapp:
+    image: nginx
+    secrets:
+      - my_password  # secret already created using the `docker secret create` command
+    container_name: aswin-nginx-container
+    environment:
+      - type=production
+    ports:
+      - "8080:80"
+
+secrets:
+  my_password:
+    file: /home/aswin/my_password.txt  #This will be mounted inside the container at : /run/secrets
