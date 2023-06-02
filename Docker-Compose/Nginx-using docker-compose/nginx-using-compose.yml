@@ -1,9 +1,0 @@
-version: '3'
-services:
-  Mynginx:
-    image: nginx
-    restart: always
-    ports:
-      - "8081:80"
-    volumes:
-      - ./nginxvol:/usr/share/nginx/html 

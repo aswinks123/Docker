@@ -1,3 +1,6 @@
+#Docker compose file to create mongo and mongo-express container with shared env variables
+#Created by Aswin KS
+
 version: '3'
 services:
   mongo:

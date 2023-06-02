@@ -1,0 +1,37 @@
+#Docker compose file to create multiple containers with shared volume and network
+#Created by Aswin KS
+version: '3'
+
+services:
+  frontend:
+    image: nginx
+    container_name: aswin-nginx-container-frontend
+    environment:
+      - type=production
+    ports:
+      - "8080:80"
+    networks:
+      - nginx-network
+    volumes:
+      - nginx-volume:/usr/share/nginx/html/
+
+
+  backend:
+    image: nginx
+    container_name: aswin-nginx-container-backend
+    environment:
+      - type=testing
+    ports:
+      - "8081:80"
+    networks:
+      - nginx-network
+    volumes:
+      - nginx-volume:/usr/share/nginx/html/ 
+
+
+networks:
+  nginx-network:
+    driver: bridge
+
+volumes:
+  nginx-volume:

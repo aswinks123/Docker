@@ -1,0 +1,25 @@
+#Docker compose file to create multiple containers with shared network
+#Created by Aswin KS
+
+version: '3'
+
+services:
+  nginx-webapp:
+    image: nginx
+    container_name: aswin-nginx-webapp
+    ports:
+      - "80:80"
+    networks:
+      - my-muliple-web-network
+
+  python-webapp:
+      image: 1365890/devops_project
+      container_name: aswin-python-webapp
+      ports:
+        - "81:8083"
+      networks:
+        - my-muliple-web-network
+
+networks:
+  my-muliple-web-network:
+    driver: bridge

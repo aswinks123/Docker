@@ -1,0 +1,18 @@
+#Docker compose file to create an nginx container, bridge network, and env variable 
+
+version: '3'
+
+services:
+  webapp:
+    image: nginx
+    container_name: aswin-nginx-container
+    environment:
+      - type=production
+    ports:
+      - "8080:80"
+    networks:
+      - nginx-network
+
+networks:
+  nginx-network:
+    driver: bridge
